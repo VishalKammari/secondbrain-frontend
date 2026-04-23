@@ -1,6 +1,7 @@
 import React from 'react'
 import CrossIcon from './CrossIcon'
 import Button from './Button'
+import Input from './Input'
 
 export default function CreateModel({ open, onClose }: { open: boolean; onClose: () => void }) {
   return (
@@ -30,21 +31,5 @@ export default function CreateModel({ open, onClose }: { open: boolean; onClose:
         </div>
       )}
     </div>
-  )
-}
-function Input({
-  onChange,
-  placeholder
-}: {
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
-}) {
-  return (
-    <input
-      onChange={onChange}
-      type="text"
-      placeholder={placeholder}
-      className='border border-gray-300 rounded-md px-4 py-2 w-full'
-    />
   )
 }
