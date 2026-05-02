@@ -19,7 +19,7 @@ const Signin = () => {
     const password=passwordRef.current?.value;
     
       if(!username || !password){
-        alert("Please enter username and password");
+        toast.error("Please enter both username and password");
         return;
       }
     try{
@@ -34,18 +34,25 @@ const Signin = () => {
     catch(error){
       toast.error("Invalid username or password");
     }
-
-    //redirect
-    
   }
 
 
   return (
-    <div className="min-h-screen w-screen bg-gray-100 flex items-center justify-center px-4">
-      
-      <div className="bg-white w-full max-w-md rounded-2xl shadow-xl p-8">
+  <div className="relative min-h-screen w-screen overflow-hidden">
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="absolute top-0 left-0 w-full h-full object-cover"
+    >
+      <source src="/public/a.mp4" type="video/mp4" />
+    </video>     
+    <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+      <h1 className="text-7xl font-instrument text-4xl p-4 pl-6 font-weight-bold text-white">Brainly</h1>
+      <Toaster />
+      <div className="bg-white/90 backdrop-blur-md w-full max-w-md rounded-2xl shadow-xl p-8">
 
-        {/* Heading */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold">Sign In</h1>
           <p className="text-gray-500 mt-2">
@@ -53,7 +60,6 @@ const Signin = () => {
           </p>
         </div>
 
-        {/* Form */}
         <div className="flex flex-col gap-5">
           <Input placeholder="Username" ref={usernameRef} />
           <Input placeholder="Password" ref={passwordRef} />
@@ -61,27 +67,27 @@ const Signin = () => {
           <div className="pt-3 flex justify-center">
             <Button 
               text="Sign In" 
-              variant="primary"
+              variant="secondary"
               onClick={signin}
             />
           </div>
         </div>
-        <Toaster />
-        
 
-        {/* Login Redirect */}
+
         <p className="text-center text-sm text-gray-500 mt-6">
           Don't have an account?{" "}
-          <span className="text-blue-600 font-medium cursor-pointer hover:underline" onClick={() => {
-            navigate('/signup');
-          }}>
+          <span
+            className="text-blue-600 font-medium cursor-pointer hover:underline"
+            onClick={() => navigate('/signup')}
+          >
             Sign Up
           </span>
         </p>
 
       </div>
     </div>
-  )
+  </div>
+);
 }
 
 export default Signin

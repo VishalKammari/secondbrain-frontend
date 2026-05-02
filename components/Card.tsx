@@ -1,6 +1,6 @@
 
 import ShareIcon from './icons/Shareicon'
-import { FacebookEmbed, InstagramEmbed, LinkedInEmbed, PinterestEmbed, XEmbed } from 'react-social-media-embed';
+import { FacebookEmbed, InstagramEmbed, PinterestEmbed, XEmbed } from 'react-social-media-embed';
 import { YouTubeEmbed } from 'react-social-media-embed';
 interface Cardprops{
     title:string;
@@ -33,7 +33,7 @@ const Card = ({ title, link, type }: Cardprops) => {
   const postId = extractLinkedInPostId(link);
 
   return (
-    <div className="break-inside-avoid bg-white shadow-md rounded-xl p-4 border">
+    <div className="break-inside-avoid bg-white shadow-md rounded-xl p-4 border max-h-[500px]">
       
       {/* Header */}
       <div className="flex justify-between items-center">
@@ -53,25 +53,25 @@ const Card = ({ title, link, type }: Cardprops) => {
       <div className="pt-4">
         
         {type === "youtube"  && (
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className="flex justify-center overflow-hidden">
             <YouTubeEmbed url={link} width={325} height={220} />
           </div>
         )}
 
         {type === "twitter" && (
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <XEmbed url={link} width={325} />
+          <div className="flex justify-center overflow-hidden">
+            <XEmbed url={link} width={325} height={325} />
           </div>
         )}
 
         {type === "instagram" && (
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className="flex justify-center overflow-hidden">
             <InstagramEmbed url={link} width={328} />
           </div>
         )}
 
         {type === "facebook" && (
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className="flex justify-center overflow-hidden">
             <FacebookEmbed url={link} width={328} />
           </div>
         )}
